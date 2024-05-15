@@ -1,0 +1,31 @@
+{
+  "name": "proyecto-festival-de-musica",
+  "version": "1.0.0",
+  "description": "sass, node, gulp",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "sass": "sass --watch src/scss:build",
+    "dev": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Socrates94/ProyectoFestivalMusica.git"
+  },
+  "keywords": [
+    "sass",
+    "node",
+    "gulp"
+  ],
+  "author": "daniel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Socrates94/ProyectoFestivalMusica/issues"
+  },
+  "homepage": "https://github.com/Socrates94/ProyectoFestivalMusica#readme",
+  "devDependencies": {
+    "gulp": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.77.0"
+  }
+}
