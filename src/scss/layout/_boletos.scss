@@ -1,0 +1,150 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.contenedor-boletos {
+    @include m.contenedor;
+
+    h3 {
+        color: v.$accent_primary;
+        &::after {
+            content: '';
+            display: block;
+            width: 12rem;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, v.$accent_primary, transparent);
+            margin: 1.5rem auto 0 auto;
+        }
+    }
+}
+
+.boletos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    max-width: 80rem;
+    margin: 0 auto;
+
+    @include m.tablet {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.pase {
+    background: v.$glass_bg;
+    border: 1px solid rgba(229, 169, 59, 0.15);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: v.$shadow_md;
+    transition: v.$transition_mid;
+
+    &:hover {
+        transform: translateY(-8px);
+        border-color: v.$accent_primary;
+        box-shadow: 0 15px 35px rgba(229, 169, 59, 0.12);
+        
+        .pase-header {
+            background-color: v.$accent_primary;
+            color: v.$oscuro;
+        }
+    }
+
+    &:nth-child(2) {
+        border: 2px solid v.$accent_primary;
+        position: relative;
+        
+        // Etiqueta de "Recomendado" o "VIP"
+        &::before {
+            content: 'VIP';
+            position: absolute;
+            top: 2rem;
+            right: -3rem;
+            background-color: v.$accent_secondary;
+            color: v.$blanco;
+            padding: 0.5rem 3.5rem;
+            font-size: 1.2rem;
+            font-weight: 900;
+            transform: rotate(45deg);
+            box-shadow: v.$shadow_sm;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+.pase-nombre {
+    font-family: v.$fuente_titulos;
+    font-size: 2.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    color: v.$blanco;
+    padding: 3rem 2rem 1.5rem 2rem;
+    margin: 0;
+}
+
+.pase-header {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: v.$text_secondary;
+    text-align: center;
+    padding: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    transition: v.$transition_fast;
+
+    p {
+        margin: 0;
+        color: inherit;
+    }
+}
+
+.pase-body {
+    padding: 3rem;
+    flex-grow: 1;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            font-size: 1.6rem;
+            color: v.$text_secondary;
+            position: relative;
+            padding-left: 2.5rem;
+
+            &:last-of-type {
+                border-bottom: none;
+            }
+
+            // Viñeta personalizada (Checkmark dorado)
+            &::before {
+                content: '✓';
+                position: absolute;
+                left: 0;
+                color: v.$accent_primary;
+                font-weight: 900;
+            }
+        }
+    }
+}
+
+.pase-footer {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 2.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+
+    p {
+        font-family: v.$fuente_titulos;
+        font-size: 4.5rem;
+        font-weight: 900;
+        color: v.$accent_primary;
+        margin: 0;
+        text-shadow: 0 0 10px rgba(229, 169, 59, 0.2);
+    }
+}

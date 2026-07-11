@@ -1,0 +1,104 @@
+@use 'variables' as v;
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    scroll-padding-top: 8rem;
+}
+
+body {
+    background-color: v.$bg_primary;
+    color: v.$text_primary;
+    font-family: v.$fuente_principal;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin: 0;
+    overflow-x: hidden;
+
+    &.overflow-hidden {
+        overflow: hidden;
+    }
+}
+
+p {
+    color: v.$text_secondary;
+    line-height: 1.8;
+}
+
+.contenedor {
+    width: 95%;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    transition: v.$transition_fast;
+    color: inherit;
+    
+    &:hover {
+        color: v.$accent_primary;
+    }
+}
+
+h1, h2, h3, h4 {
+    font-family: v.$fuente_titulos;
+    margin: 0 0 3rem 0;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    color: v.$blanco;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+h2 {
+    font-size: clamp(3rem, 6vw, 4.8rem);
+    color: v.$accent_primary;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1.5rem;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10rem;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, v.$accent_primary, transparent);
+    }
+}
+
+h3 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: v.$blanco;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+// Clase de utilidad para elementos de vidrio (Glassmorphism)
+.glass-card {
+    background: v.$glass_bg;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid v.$glass_border;
+    border-radius: 1.5rem;
+    padding: 3rem;
+    box-shadow: v.$shadow_lg;
+    transition: v.$transition_mid;
+
+    &:hover {
+        border-color: rgba(229, 169, 59, 0.4);
+        box-shadow: 0 15px 30px rgba(229, 169, 59, 0.1);
+    }
+}
+
+body > section {
+    padding: 10rem 0;
+}

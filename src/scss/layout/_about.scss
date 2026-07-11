@@ -1,0 +1,70 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.sobre-festival {
+    @include m.contenedor;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+
+    @include m.tablet {
+        flex-direction: row;
+        gap: 6rem;
+    }
+
+    .image {
+        flex: 1;
+        width: 100%;
+        max-width: 50rem;
+        
+        img {
+            border-radius: 1.5rem;
+            box-shadow: v.$shadow_lg;
+            border: 2px solid rgba(229, 169, 59, 0.3);
+            transition: v.$transition_mid;
+            
+            &:hover {
+                transform: scale(1.02);
+                border-color: v.$accent_primary;
+                box-shadow: 0 10px 30px rgba(229, 169, 59, 0.2);
+            }
+        }
+    }
+}
+
+.contenido-festival {
+    flex: 1.2;
+    text-align: center;
+
+    @include m.tablet {
+        text-align: left;
+    }
+
+    h2 {
+        text-align: center;
+        
+        @include m.tablet {
+            text-align: left;
+            &::after {
+                left: 0;
+                transform: none;
+            }
+        }
+    }
+
+    .fecha {
+        color: v.$accent_secondary;
+        font-family: v.$fuente_principal;
+        font-weight: 900;
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        font-size: 1.7rem;
+        margin-bottom: 2rem;
+    }
+}

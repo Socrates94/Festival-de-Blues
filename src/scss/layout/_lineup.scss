@@ -1,0 +1,132 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.lineup {
+    @include m.contenedor;
+
+    h3 {
+        color: v.$accent_primary;
+        &::after {
+            content: '';
+            display: block;
+            width: 12rem;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, v.$accent_primary, transparent);
+            margin: 1.5rem auto 0 auto;
+        }
+    }
+}
+
+.dia {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: v.$blanco;
+    margin: 6rem 0 3rem 0;
+    letter-spacing: 2px;
+    position: relative;
+    
+    // Un adorno de líneas laterales para la fecha
+    &::before, &::after {
+        content: '';
+        display: inline-block;
+        width: 5rem;
+        height: 2px;
+        background-color: v.$accent_secondary;
+        vertical-align: middle;
+        margin: 0 2rem;
+    }
+}
+
+.escenarios-contenedor {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 5rem;
+
+    @include m.tablet {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.escenario {
+    background: v.$glass_bg;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1.5rem;
+    padding: 3rem;
+    box-shadow: v.$shadow_md;
+    transition: v.$transition_mid;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: v.$shadow_lg;
+    }
+
+    &.bg-amarillo {
+        border-top: 5px solid v.$bg_amarillo;
+        
+        .nombre-escenario {
+            color: v.$bg_amarillo;
+        }
+    }
+
+    &.bg-verde {
+        border-top: 5px solid v.$bg_verde;
+        
+        .nombre-escenario {
+            color: v.$bg_verde;
+        }
+    }
+}
+
+.nombre-escenario {
+    font-family: v.$fuente_titulos;
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 3rem 0;
+    letter-spacing: 1px;
+}
+
+.calendario {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        padding: 1.8rem 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        font-size: 1.6rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: v.$transition_fast;
+
+        &:last-of-type {
+            border-bottom: none;
+        }
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+            
+            span {
+                color: v.$accent_blue;
+                transform: translateX(-5px);
+            }
+        }
+
+        // Hora
+        font-weight: 700;
+        color: v.$text_secondary;
+
+        // Artista
+        span {
+            font-weight: 900;
+            color: v.$blanco;
+            transition: v.$transition_fast;
+            display: inline-block;
+        }
+    }
+}

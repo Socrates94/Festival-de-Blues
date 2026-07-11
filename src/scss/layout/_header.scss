@@ -1,0 +1,98 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.header {
+    background-color: transparent;
+    padding: 2rem 0;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    transition: v.$transition_mid;
+
+    &.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(6, 10, 19, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        padding: 1.5rem 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        border-bottom: 1px solid rgba(229, 169, 59, 0.3);
+        animation: slideDown 0.4s ease-out;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 2.8rem;
+        text-align: center;
+        color: v.$blanco;
+        font-family: v.$fuente_titulos;
+        
+        span {
+            color: v.$accent_primary;
+        }
+
+        @include m.tablet {
+            text-align: left;
+        }
+    }
+}
+
+.contenido-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    @include m.tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0;
+    }
+}
+
+.navegacion-principal {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    a {
+        color: v.$text_primary;
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        position: relative;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: v.$accent_primary;
+            transition: v.$transition_fast;
+        }
+
+        &:hover, &.active {
+            color: v.$accent_primary;
+            
+            &::after {
+                width: 80%;
+            }
+        }
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
